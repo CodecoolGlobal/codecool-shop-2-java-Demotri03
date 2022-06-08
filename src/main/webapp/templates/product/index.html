@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Codecool" />
@@ -27,6 +28,7 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
+</div>
 
 <body>
 
@@ -60,7 +62,7 @@
     </div>
 
 </div>
-<div><a href="Payment.html">payment</a></div>
+<div><a href="/payment">payment</a></div>
 
 <div th:replace="footer.html :: copy"></div>
 
