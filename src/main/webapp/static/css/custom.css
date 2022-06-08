@@ -60,3 +60,18 @@
 {
     margin: 0 0 11px;
 }
+/*------------------*/
+header {
+    grid-area: header;
+
+    /* Flex container */
+    display: flex;
+    align-items: center;
+
+    color: white;
+    background-color: black;
+}
+
+header > span {
+    margin: 0.75em;
+}
