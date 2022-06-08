@@ -62,13 +62,15 @@
 }
 /*------------------*/
 header {
-    margin: 2px;
-    border-radius: 5px;
+    padding-right: 40px;
+    margin: 3px;
+    border-radius: 6px;
     grid-area: header;
 
     /* Flex container */
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     color: white;
     background-color: #2d2d2d;
@@ -108,5 +110,4 @@ a:active {
     letter-spacing: 4px;
     color: black;
     text-align: center;
-
 }

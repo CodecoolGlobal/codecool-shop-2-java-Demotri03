@@ -29,7 +29,7 @@ public class ProductService{
         var category = productCategoryDao.find(categoryId);
         return productDao.getBy(category);
     }
-//-------- my trying
+
     public List<Product> getAllProducts(){
         return productDao.getAll();
     }
@@ -42,6 +42,5 @@ public class ProductService{
         var supplier = supplierDao.find(supplierId);
         return productDao.getBy(supplier);
     }
-
 
 }

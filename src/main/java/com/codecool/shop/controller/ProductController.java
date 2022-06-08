@@ -39,7 +39,7 @@ public class ProductController extends HttpServlet {
 
         if (chosenSupplier == null) {       //filter by category
             int categoryId;
-            if (chosenCategory == null) {
+            if (chosenCategory == null) {       //default category
                 categoryId = 1;
                 context.setVariable("category", productService.getProductCategory(categoryId));
                 context.setVariable("products", productService.getProductsForCategory(categoryId));
@@ -59,7 +59,7 @@ public class ProductController extends HttpServlet {
                         categoryId = 3;
                         break;
                     default:
-                        categoryId = 1;
+                        categoryId = 4;
                 }
                 context.setVariable("category", productService.getProductCategory(categoryId));
                 context.setVariable("products", productService.getProductsForCategory(categoryId));
@@ -81,10 +81,7 @@ public class ProductController extends HttpServlet {
                 }
             context.setVariable("category", productService.getProductSupplier(supplierId));
             context.setVariable("products", productService.getProductsForSupplier(supplierId));
-
         }
-
-
 
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
