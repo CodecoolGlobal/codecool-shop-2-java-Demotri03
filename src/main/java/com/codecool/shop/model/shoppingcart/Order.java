@@ -12,12 +12,13 @@ import static java.lang.Integer.valueOf;
 public class Order{
     private Cart carttoOrder;
     private BigDecimal purchasePrice;
-  //  private int id;
+    private int id;
 
 
     public Order(Cart cart, BigDecimal purchasePrice) {
         this.carttoOrder = cart;
         this.purchasePrice = purchasePrice;
+        this.id = cart.getId();
 
     }
 

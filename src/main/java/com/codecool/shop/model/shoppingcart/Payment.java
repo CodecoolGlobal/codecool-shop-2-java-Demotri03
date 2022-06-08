@@ -6,12 +6,14 @@ import java.math.BigDecimal;
 import java.util.Random;
 
 public class Payment {
+    private Cart carttoOrder;
     private BigDecimal amount;
+    private int id;
     private User user;
 
-    public Payment(BigDecimal amount, User user) {
-        this.amount = amount;
-        this.user = user;
+    public Payment(Cart cart, BigDecimal purchasePrice) {
+        this.amount = purchasePrice;
+        this.user = User.GIZI;
     }
 
     public boolean paymentCovered(){
