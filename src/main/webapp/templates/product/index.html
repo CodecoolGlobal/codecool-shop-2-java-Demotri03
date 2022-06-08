@@ -7,7 +7,7 @@
     <meta name="author" content="Codecool" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>Codecool Shop</title>
+    <title>The Chair Shop</title>
 
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
@@ -36,21 +36,40 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
+    <h1>The Chair Shop a'la Codecool</h1>
 </div>
 
 <div class="container">
-    <div class="card">
+
+    <header>
+        <span>Categories: </span>
+        <span><a href="\?category=metalChairs">Metal chairs</a></span>
+        <span><a href="\?category=woodChairs">Wooden Chairs</a></span>
+        <span><a href="\?category=otherChairs">Other type of chairs</a></span>
+        <strong><span><a href="\?category=all">All categories</a></span></strong>
+    </header>
+
+    <header>
+            <span>Suppliers: </span>
+            <span><a href="\?supplier=chairFactory">The Chair Factory</a></span>
+            <span><a href="\?supplier=ecoChair">Eco Chairs Limited</a></span>
+            <span><a href="\?supplier=yellowChairs">Yellow Chairs Company</a></span>
+            <strong><span><a href="\?category=all">All suppliers</a></span></strong>
+    </header>
+    <br>
+
+    <div id="chosen" class="card">
         <strong th:text="${category.name}">Category Title</strong>
     </div>
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
+                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/chair_' + ${prod.id} + '.jpeg'" alt="" />
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
+                    <strong><p class="card-text" th:text="${prod.supplier.name}">Product supplier </p></strong>
                 </div>
                 <div class="card-body">
                     <div class="card-text">

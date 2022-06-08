@@ -29,6 +29,7 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
     public void add(ProductCategory category) {
         category.setId(data.size() + 1);
         data.add(category);
+        System.out.println(data);
     }
 
     @Override
