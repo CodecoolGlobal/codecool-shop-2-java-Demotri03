@@ -7,6 +7,7 @@ import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.model.shoppingcart.Order;
 import com.codecool.shop.service.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -22,10 +23,8 @@ import java.io.IOException;
 public class OrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CartDao cart = CartDaoMem.getInstance();
-       // ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-       // ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
-
+        //CartDao cart = CartDaoMem.getInstance();
+        //var order = new Order();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
