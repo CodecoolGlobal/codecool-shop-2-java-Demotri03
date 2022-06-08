@@ -1,6 +1,6 @@
 package com.codecool.shop.model.shoppingcart;
 
-import com.codecool.shop.service.User;
+import com.codecool.shop.model.user.User;
 
 import java.math.BigDecimal;
 import java.util.Random;
