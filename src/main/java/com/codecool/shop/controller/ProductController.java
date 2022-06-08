@@ -2,8 +2,10 @@ package com.codecool.shop.controller;
 
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.service.ProductService;
 import com.codecool.shop.config.TemplateEngineUtil;
 import org.thymeleaf.TemplateEngine;
@@ -29,47 +31,41 @@ public class ProductController extends HttpServlet {
 
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-        ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
+        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+        ProductService productService = new ProductService(productDataStore,productCategoryDataStore,supplierDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-//------------------- filter by category ------------------
-        int categoryId;
-        if (chosenCategory == null) {
-            categoryId = 1;
-            context.setVariable("category", productService.getProductCategory(categoryId));
-            context.setVariable("products", productService.getProductsForCategory(categoryId));
-        } else if (chosenCategory.equals("all")){
-            categoryId = 4;
-            context.setVariable("category", productService.getProductCategory(categoryId));
-            context.setVariable("products", productService.getAllProducts());
-        } else {
-            switch (chosenCategory) {
-                case "metalChairs":
-                    categoryId = 1;
-                    break;
-                case "woodChairs":
-                    categoryId = 2;
-                    break;
-                case "otherChairs":
-                    categoryId = 3;
-                    break;
-                default:
-                    categoryId = 1;
+
+        if (chosenSupplier == null) {       //filter by category
+            int categoryId;
+            if (chosenCategory == null) {
+                categoryId = 1;
+                context.setVariable("category", productService.getProductCategory(categoryId));
+                context.setVariable("products", productService.getProductsForCategory(categoryId));
+            } else if (chosenCategory.equals("all")) {
+                categoryId = 4;
+                context.setVariable("category", productService.getProductCategory(categoryId));
+                context.setVariable("products", productService.getAllProducts());
+            } else {
+                switch (chosenCategory) {
+                    case "metalChairs":
+                        categoryId = 1;
+                        break;
+                    case "woodChairs":
+                        categoryId = 2;
+                        break;
+                    case "otherChairs":
+                        categoryId = 3;
+                        break;
+                    default:
+                        categoryId = 1;
+                }
+                context.setVariable("category", productService.getProductCategory(categoryId));
+                context.setVariable("products", productService.getProductsForCategory(categoryId));
             }
-            context.setVariable("category", productService.getProductCategory(categoryId));
-            context.setVariable("products", productService.getProductsForCategory(categoryId));
-        }
-
-//        context.setVariable("category", productService.getProductCategory(categoryId));
-//        context.setVariable("products", productService.getProductsForCategory(categoryId));
-//------------------- filter by category end ------------------
-
-//------------------- filter by supplier ------------------
-        int supplierId;
-        if (chosenSupplier == null) {
-            supplierId = 1;
-        } else {
+        } else {            //filter by supplier
+            int supplierId;
             switch (chosenSupplier) {
                 case "chairFactory":
                     supplierId = 1;
@@ -82,11 +78,13 @@ public class ProductController extends HttpServlet {
                     break;
                 default:
                     supplierId = 1;
-            }
+                }
+            context.setVariable("category", productService.getProductSupplier(supplierId));
+            context.setVariable("products", productService.getProductsForSupplier(supplierId));
+
         }
 
-//        context.setVariable("category", productService.getProductCategory(categoryId));
-//        context.setVariable("products", productService.getProductsForCategory(categoryId));
+
 
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();

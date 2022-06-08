@@ -30,7 +30,7 @@ public class Initializer implements ServletContextListener {
         Supplier ecoChair = new Supplier("Eco Chairs Limited", "Environment friendly chairs.");
         supplierDataStore.add(ecoChair);
         Supplier yellowChairs = new Supplier("Yellow Chairs Company", "Only yellow chairs.");
-        supplierDataStore.add(ecoChair);
+        supplierDataStore.add(yellowChairs);
 
         //setting up a new product category
 //        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
