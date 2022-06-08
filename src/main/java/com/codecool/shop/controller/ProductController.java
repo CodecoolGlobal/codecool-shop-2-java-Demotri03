@@ -37,6 +37,12 @@ public class ProductController extends HttpServlet {
         int categoryId;
         if (chosenCategory == null) {
             categoryId = 1;
+            context.setVariable("category", productService.getProductCategory(categoryId));
+            context.setVariable("products", productService.getProductsForCategory(categoryId));
+        } else if (chosenCategory.equals("all")){
+            categoryId = 4;
+            context.setVariable("category", productService.getProductCategory(categoryId));
+            context.setVariable("products", productService.getAllProducts());
         } else {
             switch (chosenCategory) {
                 case "metalChairs":
@@ -51,10 +57,12 @@ public class ProductController extends HttpServlet {
                 default:
                     categoryId = 1;
             }
+            context.setVariable("category", productService.getProductCategory(categoryId));
+            context.setVariable("products", productService.getProductsForCategory(categoryId));
         }
 
-        context.setVariable("category", productService.getProductCategory(categoryId));
-        context.setVariable("products", productService.getProductsForCategory(categoryId));
+//        context.setVariable("category", productService.getProductCategory(categoryId));
+//        context.setVariable("products", productService.getProductsForCategory(categoryId));
 //------------------- filter by category end ------------------
 
 //------------------- filter by supplier ------------------
@@ -77,8 +85,8 @@ public class ProductController extends HttpServlet {
             }
         }
 
-        context.setVariable("category", productService.getProductCategory(categoryId));
-        context.setVariable("products", productService.getProductsForCategory(categoryId));
+//        context.setVariable("category", productService.getProductCategory(categoryId));
+//        context.setVariable("products", productService.getProductsForCategory(categoryId));
 
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();

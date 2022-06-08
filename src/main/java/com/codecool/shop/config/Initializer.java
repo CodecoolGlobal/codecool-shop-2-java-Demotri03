@@ -35,12 +35,14 @@ public class Initializer implements ServletContextListener {
         //setting up a new product category
 //        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
 //        productCategoryDataStore.add(tablet);
-        ProductCategory metalChair = new ProductCategory("Metal", "MetalDepartment", "A chair made of metal. Usually can support heavy people. Easy to clean. Minimalist design.");
+        ProductCategory metalChair = new ProductCategory("Metal chairs", "MetalDepartment", "A chair made of metal. Usually can support heavy people. Easy to clean. Minimalist design.");
         productCategoryDataStore.add(metalChair);
-        ProductCategory woodChair = new ProductCategory("Wood", "WoodDepartment", "A chair made of wood. Max for 100 kg weight. Clean with caution. Modern design.");
+        ProductCategory woodChair = new ProductCategory("Wooden chairs", "WoodDepartment", "A chair made of wood. Max for 100 kg weight. Clean with caution. Modern design.");
         productCategoryDataStore.add(woodChair);
-        ProductCategory otherChair = new ProductCategory("Other", "OtherDepartment", "A chair made of plastic or other fabric. Clean carefully. Various design.");
+        ProductCategory otherChair = new ProductCategory("Other type of chairs", "OtherDepartment", "A chair made of plastic or other fabric. Clean carefully. Various design.");
         productCategoryDataStore.add(otherChair);
+        ProductCategory allChairs = new ProductCategory("All of the available chairs", "AllDepartment", "All of the chairs");
+        productCategoryDataStore.add(allChairs);
 
         //setting up products and printing it
         productDataStore.add(new Product("Organic Metal 300", new BigDecimal("302.9"), "USD", "Stackable chair with armrests, made using natural materials and artisanal processes.", metalChair, chairFactory));

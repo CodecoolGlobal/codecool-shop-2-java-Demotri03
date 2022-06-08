@@ -24,6 +24,10 @@ public class ProductService{
         var category = productCategoryDao.find(categoryId);
         return productDao.getBy(category);
     }
+//-------- my trying
+    public List<Product> getAllProducts(){
+        return productDao.getAll();
+    }
 
 
 }
