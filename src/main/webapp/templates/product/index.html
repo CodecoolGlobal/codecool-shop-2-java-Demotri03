@@ -43,16 +43,17 @@
         <span><a href="\?category=otherChairs">Other type of chairs</a></span>
         <strong><span><a href="\?category=all">All available chairs</a></span></strong>
     </header>
-    <br>
 
     <header>
             <span>Suppliers: </span>
             <span><a href="\?supplier=chairFactory">The Chair Factory</a></span>
             <span><a href="\?supplier=ecoChair">Eco Chairs Limited</a></span>
             <span><a href="\?supplier=yellowChairs">Yellow Chairs Company</a></span>
+            <strong><span><a href="\?category=all">All available chairs</a></span></strong>
     </header>
+    <br>
 
-    <div class="card">
+    <div id="chosen" class="card">
         <strong th:text="${category.name}">Category Title</strong>
     </div>
 
@@ -70,7 +71,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <a class="btn btn-secondary" href="#">Add to cart</a>
                     </div>
                 </div>
             </div>
