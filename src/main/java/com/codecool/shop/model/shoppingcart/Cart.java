@@ -11,8 +11,6 @@ public class Cart {
     private BigDecimal price;
 
 
-
-
 //    private void  updatePrice() {
 //        this.price = BigDecimal.ZERO;
 //        for (Product product : LineItems.keySet()) {
