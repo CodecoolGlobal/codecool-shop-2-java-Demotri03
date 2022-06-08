@@ -7,6 +7,7 @@ import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.model.Product;
 import com.codecool.shop.model.shoppingcart.Order;
 import com.codecool.shop.service.ProductService;
 import org.thymeleaf.TemplateEngine;
@@ -18,11 +19,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @WebServlet(urlPatterns = {"/payment"})
 public class OrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //Map<Product, Integer> cartItems = req.getParameter("items");
         //CartDao cart = CartDaoMem.getInstance();
         //var order = new Order();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
