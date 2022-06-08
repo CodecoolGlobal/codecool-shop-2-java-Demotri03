@@ -65,6 +65,10 @@ public class Product extends BaseModel {
         return this;
     }
 
+    public String generateCartButtonLink(){
+        return "/cart/add?productId=" + this.getId();
+    }
+
     @Override
     public String toString() {
         return String.format("id: %1$d, " +
