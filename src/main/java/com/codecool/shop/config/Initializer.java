@@ -3,12 +3,14 @@ package com.codecool.shop.config;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
+import com.codecool.shop.model.shoppingcart.Cart;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -31,6 +33,7 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(ecoChair);
         Supplier yellowChairs = new Supplier("Yellow Chairs Company", "Only yellow chairs.");
         supplierDataStore.add(yellowChairs);
+
 
         //setting up a new product category
         ProductCategory metalChair = new ProductCategory("Metal chairs", "MetalDepartment", "A chair made of metal. Usually can support heavy people. Easy to clean. Minimalist design.");
@@ -66,5 +69,10 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("The Desert Cactus ", new BigDecimal("854.8"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", otherChair, yellowChairs));
         productDataStore.add(new Product("Metal Bar Chair 24", new BigDecimal("1258"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", metalChair, chairFactory));
         productDataStore.add(new Product("Yellow Wooden Rocking Chair", new BigDecimal("89.8"), "USD", "Cares design: with an internal wooden structure made with zero-emission adhesives to keep the planet free from pollution", woodChair, yellowChairs));
+
+        //setting up a new cart
+        CartDaoMem cartDataStore = CartDaoMem.getInstance();
+        Cart cart = new Cart("1");
+        cartDataStore.add(cart);
     }
 }
