@@ -23,14 +23,63 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String chosenCategory = req.getParameter("category");
+        String chosenSupplier = req.getParameter("supplier");
+
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("category", productService.getProductCategory(1));
-        context.setVariable("products", productService.getProductsForCategory(1));
+//------------------- filter by category ------------------
+        int categoryId;
+        if (chosenCategory == null) {
+            categoryId = 1;
+        } else {
+            switch (chosenCategory) {
+                case "metalChairs":
+                    categoryId = 1;
+                    break;
+                case "woodChairs":
+                    categoryId = 2;
+                    break;
+                case "otherChairs":
+                    categoryId = 3;
+                    break;
+                default:
+                    categoryId = 1;
+            }
+        }
+
+        context.setVariable("category", productService.getProductCategory(categoryId));
+        context.setVariable("products", productService.getProductsForCategory(categoryId));
+//------------------- filter by category end ------------------
+
+//------------------- filter by supplier ------------------
+        int supplierId;
+        if (chosenSupplier == null) {
+            supplierId = 1;
+        } else {
+            switch (chosenSupplier) {
+                case "chairFactory":
+                    supplierId = 1;
+                    break;
+                case "ecoChair":
+                    supplierId = 2;
+                    break;
+                case "yellowChairs":
+                    supplierId = 3;
+                    break;
+                default:
+                    supplierId = 1;
+            }
+        }
+
+        context.setVariable("category", productService.getProductCategory(categoryId));
+        context.setVariable("products", productService.getProductsForCategory(categoryId));
+
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
         // params.put("category", productCategoryDataStore.find(1));
