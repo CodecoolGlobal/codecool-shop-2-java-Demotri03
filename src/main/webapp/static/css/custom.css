@@ -60,3 +60,54 @@
 {
     margin: 0 0 11px;
 }
+/*------------------*/
+header {
+    padding-right: 40px;
+    margin: 3px;
+    border-radius: 6px;
+    grid-area: header;
+
+    /* Flex container */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: white;
+    background-color: black;
+}
+
+header > span {
+    margin: 0.5em;
+}
+
+/* unvisited link */
+a:link {
+    color: #eee153;
+}
+
+/* visited link */
+a:visited {
+    color: #fad549;
+}
+
+/* mouse over link */
+a:hover {
+    color: #e1a230;
+}
+
+/* selected link */
+a:active {
+    color: #ea8008;
+}
+
+#chosen {
+    background: #debe6c;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    letter-spacing: 4px;
+    color: black;
+    text-align: center;
+}
