@@ -111,3 +111,6 @@ a:active {
     color: black;
     text-align: center;
 }
+.cart{
+    text-align: right;
+}

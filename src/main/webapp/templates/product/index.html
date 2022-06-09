@@ -35,6 +35,11 @@
     <h1>The Chair Shop a'la Codecool</h1>
 </div>
 
+<div class="cart" th:attr="data-count=${cart.getItemCount()}">
+    <a href="/cart/review"><img src="/static/img/cart.jpg"  style="width:42px;height:42px;"></a>
+    <p id="cart-counter" th:text="${cart.getItemCount()}"></p>
+</div>
+
 <div class="container">
 
     <header>
