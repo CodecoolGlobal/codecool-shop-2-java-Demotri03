@@ -11,6 +11,7 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 import com.codecool.shop.model.shoppingcart.Cart;
+import com.codecool.shop.model.user.User;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -72,7 +73,7 @@ public class Initializer implements ServletContextListener {
 
         //setting up a new cart
         CartDaoMem cartDataStore = CartDaoMem.getInstance();
-        Cart cart = new Cart("1");
+        Cart cart = new Cart("1", User.GIZI);
         cartDataStore.add(cart);
     }
 }

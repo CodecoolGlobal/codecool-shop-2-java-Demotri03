@@ -8,6 +8,7 @@ import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.model.shoppingcart.Cart;
 import com.codecool.shop.service.CartService;
 import com.codecool.shop.service.ProductService;
 import org.thymeleaf.TemplateEngine;
@@ -29,7 +30,11 @@ public class CartReviewController extends HttpServlet {
         CartService cartService = new CartService(CartDaoMem.getInstance());
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("cart", cartService.getCartById(1).getReviewString());
+        Cart cart = cartService.getCartById(1);
+        context.setVariable("cart", cart.getReviewString());
+        context.setVariable("username", cart.getUser().getName());
+        context.setVariable("user_account",  cart.getUser());
+        context.setVariable("amount", cart.getPrice());
 
 
 

@@ -4,6 +4,7 @@ import com.codecool.shop.model.BaseModel;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
+import com.codecool.shop.model.user.User;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,10 +15,13 @@ import java.util.Map;
 public class Cart extends BaseModel {
     protected Map<Product, Integer> LineItems= new HashMap<>();
     private BigDecimal price;
+    User user;
 
-    public Cart(String name) {
+
+    public Cart(String name, User user) {
         super(name);
         this.price= BigDecimal.valueOf(0);
+        this.user = user;
     }
 
 
@@ -80,9 +84,14 @@ public class Cart extends BaseModel {
             data.add(number +" "+currency);
             String id = String.valueOf(key.getId());
             data.add(id);
+            data.add(this.user.toString());
             ret.add(data);
         }
         return ret;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     @Override

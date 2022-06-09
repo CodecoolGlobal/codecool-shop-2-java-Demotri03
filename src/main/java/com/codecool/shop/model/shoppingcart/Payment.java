@@ -1,3 +1,4 @@
+/*
 package com.codecool.shop.model.shoppingcart;
 
 import com.codecool.shop.model.user.User;
@@ -38,3 +39,4 @@ public class Payment {
 
 
 }
+*/

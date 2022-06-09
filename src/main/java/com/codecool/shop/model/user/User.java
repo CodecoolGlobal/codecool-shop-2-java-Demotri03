@@ -3,9 +3,9 @@ package com.codecool.shop.model.user;
 import java.math.BigDecimal;
 
 public enum User {
-    BELA("Bela", 1234),
+    BELA("Bela", 9876),
     TIVADAR( "Tivadar", 5678),
-    GIZI("Gizus", 9876)
+    GIZI("Gizus", 1234)
     ;
 
     private String name;
@@ -16,6 +16,20 @@ public enum User {
         this.name = name;
         this.cardNr = cardNr;
        // this.account =
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCardNr() {
+        return cardNr;
+    }
+
+    @Override
+    public String toString(){
+        return "\nUser: " + this.name + ", card number: " + this.cardNr;
     }
 
 }
