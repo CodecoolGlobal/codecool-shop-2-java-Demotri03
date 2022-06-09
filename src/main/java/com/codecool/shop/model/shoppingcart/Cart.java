@@ -49,6 +49,29 @@ public class Cart extends BaseModel {
         }
         return ret;
     }
+    public void updateCart(int productId, boolean direction) {
+        //iterate through cart lineitem
+        System.out.println(direction + "ASDASDASD");
+        for (Map.Entry<Product, Integer> entry : LineItems.entrySet()) {
+            Product key = entry.getKey();
+            Integer value = entry.getValue();
+            if (key.getId() == productId) {
+                if (direction) {
+                    value++;
+                } else {
+                    value--;
+                }
+                if (value == 0) {
+                    LineItems.remove(key);
+                } else {
+                    LineItems.put(key, value);
+                }
+            }
+        }
+    }
+
+
+
 
     public void addItem(Product product) {
         //if product is null, create a new product
