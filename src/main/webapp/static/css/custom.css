@@ -124,6 +124,14 @@ a:active {
     width: 60vw;
 }
 
+#quantity{
+    text-align: right;
+}
+
+#quantity-head{
+    text-align: right;
+}
+
 .cart-header{
     width: 40vw;
 }

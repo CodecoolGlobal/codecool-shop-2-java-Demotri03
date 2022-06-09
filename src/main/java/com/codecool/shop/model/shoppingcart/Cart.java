@@ -77,8 +77,9 @@ public class Cart extends BaseModel {
             data.add(key.getPrice());
             String currency= key.getDefaultCurrency().toString();
             Integer number = key.getPriceForReview()*value;
-            data.add(number.toString()+" "+currency);
-
+            data.add(number +" "+currency);
+            String id = String.valueOf(key.getId());
+            data.add(id);
             ret.add(data);
         }
         return ret;
