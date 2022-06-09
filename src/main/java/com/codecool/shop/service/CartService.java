@@ -17,7 +17,7 @@ public class CartService {
     }
 
     public Cart getCartById(int id) {
-        System.out.println("cart: "+ cartDao.find(id));
+     //   System.out.println("cart: "+ cartDao.find(id));
         return cartDao.find(id);
     }
 

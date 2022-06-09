@@ -34,9 +34,7 @@ public class PaymentController extends HttpServlet {
 
         Cart cart = cartService.getCartById(1);
 
-       // Order order = new Order(cart);
-
-        context.setVariable("cart",cart.getReviewString());
+        context.setVariable("cart", cart.getReviewString());
         engine.process("order/payment.html", context, resp.getWriter());
     }
 }

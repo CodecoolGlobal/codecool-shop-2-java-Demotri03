@@ -37,27 +37,28 @@ public class PaymentConfirmation extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 */
         Cart cart = cartService.getCartById(1);
-        Order order = null;
+        Order order = new Order(cart);
+        System.out.println( "total price: " + order.getPurchasePrice());
         User user = cart.getUser();
+        System.out.println(user.toString());
+
         int confirmationCode;
         var typedAccount = req.getParameter("account");
         System.out.println(typedAccount);
-        System.out.println(user.getCardNr());
 
-        if (typedAccount.equals(String.valueOf(user.getCardNr()))){
-            order = new Order(cart);
+        if (typedAccount.equals(String.valueOf(user.getCardNr()))) {
             user.getAccount().pay(order);
-            if (order.isPayed()){
+            if (order.isPayed()) {
                 confirmationCode = 1;
                 System.out.println(order.getPurchasePrice());
 
-            }else{
+            } else {
                 confirmationCode = 0;
                 System.out.println(order.getPurchasePrice());
 
             }
 
-        }else{
+        } else {
             confirmationCode = 5;
         }
         var out = resp.getWriter();

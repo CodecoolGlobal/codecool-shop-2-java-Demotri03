@@ -3,10 +3,13 @@ package com.codecool.shop.model.user;
 import java.math.BigDecimal;
 
 public enum Account {
+
+
     ACCOUNT_1(1234, 1000 ),
     ACCOUNT_2( 5678, 2000),
     ACCOUNT_3( 9876, 3000)
     ;
+
 
 
    private int id;
