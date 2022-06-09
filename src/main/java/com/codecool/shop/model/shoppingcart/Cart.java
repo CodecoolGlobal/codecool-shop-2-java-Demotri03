@@ -6,7 +6,9 @@ import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Cart extends BaseModel {
@@ -62,6 +64,22 @@ public class Cart extends BaseModel {
             LineItems.remove(product);
         }
         updatePrice();
+    }
+
+    public List<List<String>> getReviewString(){
+        List<List<String>> ret = new ArrayList<>();
+        for (Map.Entry<Product, Integer> entry : LineItems.entrySet()) {
+            Product key = entry.getKey();
+            Integer value = entry.getValue();
+            List<String> data = new ArrayList<>();
+            data.add(key.getName());
+            data.add(value.toString());
+            data.add(key.getPrice());
+            Integer number = key.getPriceForReview()*value;
+            data.add(number.toString());
+            ret.add(data);
+        }
+        return ret;
     }
 
     @Override

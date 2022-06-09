@@ -38,6 +38,10 @@ public class Product extends BaseModel {
         return String.valueOf(this.defaultPrice) + " " + this.defaultCurrency.toString();
     }
 
+    public int getPriceForReview(){
+        return 10;
+    }
+
     public void setPrice(BigDecimal price, String currency) {
         this.defaultPrice = price;
         this.defaultCurrency = Currency.getInstance(currency);
