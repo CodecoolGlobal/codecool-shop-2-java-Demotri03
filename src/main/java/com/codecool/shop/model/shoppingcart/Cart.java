@@ -50,7 +50,7 @@ public class Cart extends BaseModel {
         //if product is null, create a new product
 
         if (LineItems.containsKey(product)) {
-            LineItems.put(product, LineItems.get(product));
+            LineItems.put(product, LineItems.get(product) + 1);
         } else {
             LineItems.put(product, 1);
         }
@@ -75,8 +75,10 @@ public class Cart extends BaseModel {
             data.add(key.getName());
             data.add(value.toString());
             data.add(key.getPrice());
+            String currency= key.getDefaultCurrency().toString();
             Integer number = key.getPriceForReview()*value;
-            data.add(number.toString());
+            data.add(number.toString()+" "+currency);
+
             ret.add(data);
         }
         return ret;

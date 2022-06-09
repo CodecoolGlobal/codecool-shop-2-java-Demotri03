@@ -39,7 +39,7 @@ public class Product extends BaseModel {
     }
 
     public int getPriceForReview(){
-        return 10;
+        return this.defaultPrice.intValue();
     }
 
     public void setPrice(BigDecimal price, String currency) {
