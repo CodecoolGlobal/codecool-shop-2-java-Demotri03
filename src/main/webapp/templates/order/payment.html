@@ -9,9 +9,15 @@
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
 </div>
-<div class="container">
+<div class="container" id="payment-container">
+    <p>Please enter your account number</p><br>
+<input type="number" id="accountNr">
+    <button id="pay" class="btn btn-primary btn-sm">PAY</button>
+
 
 </div>
+<div class="jumbotron">
+     <h1 class="display-4" id="confirm"></h1>
 
 <div th:replace="footer.html :: copy"></div>
 </body>

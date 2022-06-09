@@ -19,6 +19,8 @@
         <version.plugin.jetty>9.4.30.v20200611</version.plugin.jetty>
         <version.javax.servlet.api>4.0.1</version.javax.servlet.api>
         <version.thymeleaf>3.0.11.RELEASE</version.thymeleaf>
+        <gson.version>2.9.0</gson.version>
+
     </properties>
 
     <build>
@@ -55,6 +57,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

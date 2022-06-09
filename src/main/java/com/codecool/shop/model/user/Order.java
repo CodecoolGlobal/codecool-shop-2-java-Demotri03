@@ -1,28 +1,38 @@
-package com.codecool.shop.model.shoppingcart;
+package com.codecool.shop.model.user;
 
+import com.codecool.shop.model.shoppingcart.Cart;
 import com.codecool.shop.model.user.User;
 
 import java.math.BigDecimal;
 
 import static java.lang.Integer.valueOf;
 
-public class Order{
+public class Order {
     private Cart carttoOrder;
-    private BigDecimal purchasePrice;
     private int id;
     private User user;
+    private BigDecimal purchasePrice;
+    private boolean payed;
 
 
-    public Order(Cart cart, BigDecimal purchasePrice, User user) {
+    public Order(Cart cart) {
         this.carttoOrder = cart;
-        this.purchasePrice = purchasePrice;
-        this.user = user;
         this.id = cart.getId();
+        this.user = cart.getUser();
+        this.purchasePrice = cart.getPrice();
+        this.payed = false;
     }
 
+    public BigDecimal getPurchasePrice() {
+        return purchasePrice;
+    }
 
-    public void pay(){
+    public boolean isPayed(){
+        return this.payed;
+    }
 
+    protected void getPayed(){
+        this.payed = true;
     }
 
     @Override

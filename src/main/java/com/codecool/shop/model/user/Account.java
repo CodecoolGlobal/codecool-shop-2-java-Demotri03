@@ -26,7 +26,7 @@ public enum Account {
         return balance;
     }
 
-    private boolean hasAccountCover(BigDecimal price){
+    protected boolean hasAccountCover(BigDecimal price){
         BigDecimal resultBalance = this.balance.subtract(price);
         int result = resultBalance.compareTo(BigDecimal.ZERO);
         return result >= 0;
@@ -36,7 +36,19 @@ public enum Account {
         if (hasAccountCover(price)){
             this.balance = this.balance.subtract(price);
         }else{
-            throw new IllegalArgumentException("There is not enough balance on account");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void pay(Order order){
+        try{
+            setBalance(order.getPurchasePrice());
+            order.getPayed();
+        }catch (IllegalArgumentException e){
+            System.out.println("There is not enough balance on account");
+
+        }finally {
+            System.out.println("Balance: " + this.balance);
         }
     }
 
