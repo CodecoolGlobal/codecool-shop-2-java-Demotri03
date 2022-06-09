@@ -42,15 +42,17 @@
     <thead>
     <tr>
       <th class="cart-header">   Name</th>
-      <th class="cart-header">Quantity</th>
+      <th id="quantity-head" class="cart-header">Quantity</th>
+      <th class="cart-header"></th>
       <th class="cart-header">   Unit price</th>
       <th class="cart-header">   Total price</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr th:id="item+${prod[4]}">
       <td th:text="${prod[0]}"></td>
-      <td th:text="${prod[1]}"></td>
+      <td id="quantity" th:text="${prod[1]}"></td>
+      <td><button class="btn btn-success cart-review"  th:id="add+${prod[4]}"  >+</button><button th:id="remove+${prod[4]}" class="btn btn-success cart-review"  >-</button></td>
       <td th:text="${prod[2]}"></td>
       <td th:text="${prod[3]}"></td>
     </tr>
