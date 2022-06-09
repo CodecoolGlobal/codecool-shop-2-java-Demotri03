@@ -1,8 +1,6 @@
-
 //get all cart buttons
 function initEventListeners() {
     const cartButtons = document.getElementsByClassName("add-to-cart");
-    console.log(cartButtons);
     //iterate over cart buttons
     for (let i = 0; i < cartButtons.length; i++) {
         cartButtons[i].addEventListener("click",async function(){
