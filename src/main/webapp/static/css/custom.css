@@ -111,3 +111,30 @@ a:active {
     color: black;
     text-align: center;
 }
+
+
+#cart-review{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    letter-spacing: 4px;
+    text-align: center;
+    width: 60vw;
+}
+
+#quantity{
+    text-align: right;
+}
+
+#quantity-head{
+    text-align: right;
+}
+
+.cart-header{
+    width: 40vw;
+}
+.cart{
+    text-align: right;
+}
