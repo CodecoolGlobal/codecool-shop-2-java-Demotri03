@@ -95,6 +95,7 @@ public class Cart extends BaseModel {
 
     public List<List<String>> getReviewString(){
         List<List<String>> ret = new ArrayList<>();
+        int total = this.price.intValue();
         for (Map.Entry<Product, Integer> entry : LineItems.entrySet()) {
             Product key = entry.getKey();
             Integer value = entry.getValue();
@@ -108,6 +109,7 @@ public class Cart extends BaseModel {
             String id = String.valueOf(key.getId());
             data.add(id);
             data.add(this.user.toString());
+            data.add("Cart value: "+total +" "+currency);
             ret.add(data);
         }
         return ret;
