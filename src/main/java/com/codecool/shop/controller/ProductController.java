@@ -41,49 +41,9 @@ public class ProductController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
         if (chosenSupplier == null) {       //filter by category
-            int categoryId;
-            if (chosenCategory == null) {       //default category
-                categoryId = 1;
-                context.setVariable("category", productService.getProductCategory(categoryId));
-                context.setVariable("products", productService.getProductsForCategory(categoryId));
-            } else if (chosenCategory.equals("all")) {
-                categoryId = 4;
-                context.setVariable("category", productService.getProductCategory(categoryId));
-                context.setVariable("products", productService.getAllProducts());
-            } else {
-                switch (chosenCategory) {
-                    case "metalChairs":
-                        categoryId = 1;
-                        break;
-                    case "woodChairs":
-                        categoryId = 2;
-                        break;
-                    case "otherChairs":
-                        categoryId = 3;
-                        break;
-                    default:
-                        categoryId = 4;
-                }
-                context.setVariable("category", productService.getProductCategory(categoryId));
-                context.setVariable("products", productService.getProductsForCategory(categoryId));
-            }
+            filterByCategory(chosenCategory, productService, context);
         } else {            //filter by supplier
-            int supplierId;
-            switch (chosenSupplier) {
-                case "chairFactory":
-                    supplierId = 1;
-                    break;
-                case "ecoChair":
-                    supplierId = 2;
-                    break;
-                case "yellowChairs":
-                    supplierId = 3;
-                    break;
-                default:
-                    supplierId = 1;
-                }
-            context.setVariable("category", productService.getProductSupplier(supplierId));
-            context.setVariable("products", productService.getProductsForSupplier(supplierId));
+            filterBySupplier(chosenSupplier, productService, context);
         }
 
         context.setVariable("cart", cartService.getCartById(1));
@@ -96,6 +56,54 @@ public class ProductController extends HttpServlet {
         // params.put("products", productDataStore.getBy(productCategoryDataStore.find(1)));
         // context.setVariables(params);
         engine.process("product/index.html", context, resp.getWriter());
+    }
+
+    private void filterBySupplier(String chosenSupplier, ProductService productService, WebContext context) {
+        int supplierId;
+        switch (chosenSupplier) {
+            case "chairFactory":
+                supplierId = 1;
+                break;
+            case "ecoChair":
+                supplierId = 2;
+                break;
+            case "yellowChairs":
+                supplierId = 3;
+                break;
+            default:
+                supplierId = 1;
+            }
+        context.setVariable("category", productService.getProductSupplier(supplierId));
+        context.setVariable("products", productService.getProductsForSupplier(supplierId));
+    }
+
+    private void filterByCategory(String chosenCategory, ProductService productService, WebContext context) {
+        int categoryId;
+        if (chosenCategory == null) {       //default category
+            categoryId = 1;
+            context.setVariable("category", productService.getProductCategory(categoryId));
+            context.setVariable("products", productService.getProductsForCategory(categoryId));
+        } else if (chosenCategory.equals("all")) {
+            categoryId = 4;
+            context.setVariable("category", productService.getProductCategory(categoryId));
+            context.setVariable("products", productService.getAllProducts());
+        } else {
+            switch (chosenCategory) {
+                case "metalChairs":
+                    categoryId = 1;
+                    break;
+                case "woodChairs":
+                    categoryId = 2;
+                    break;
+                case "otherChairs":
+                    categoryId = 3;
+                    break;
+                default:
+                    categoryId = 4;
+            }
+            context.setVariable("category", productService.getProductCategory(categoryId));
+            context.setVariable("products", productService.getProductsForCategory(categoryId));
+        }
     }
 
 }
