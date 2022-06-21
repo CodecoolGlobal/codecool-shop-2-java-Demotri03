@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS Users CASCADE;
 DROP TABLE IF EXISTS Carts CASCADE;
 
 
-
 CREATE TABLE Products(
                          id          SERIAL PRIMARY KEY  NOT NULL,
                          name        VARCHAR(100)        NOT NULL,
@@ -57,6 +56,7 @@ INSERT INTO ProductCategories(name, department, description) VALUES
 ('Other type of chairs', 'OtherDepartment', 'A chair made of plastic or other fabric. Clean carefully. Various design.'),
 ('All of the available chairs', 'AllDepartment', 'All of the chairs');
 
+INSERT INTO Carts(id, date, userid, items) VALUES (0, NULL, NULL, NULL);
 
 INSERT INTO Products(name, price, currency, description, categoryID, supplierID, imageRoute)  VALUES
 ('Organic Metal 300', 302.9, 'USD', 'Stackable chair without armrests, made using natural materials and artisanal processes.', 1, 1, 'chair_1.jpeg'),
@@ -86,3 +86,13 @@ INSERT INTO Products(name, price, currency, description, categoryID, supplierID,
 ('The Desert Cactus', 854.8, 'USD', 'I guess nobody is reading these descriptions.', 3, 3, 'chair_21.jpeg'),
 ('Metal Bar Chair 24', 1258, 'USD', 'Im not feeling very creative today chair.', 1, 1, 'chair_22.jpeg'),
 ('Yellow Wooden Rocking Chair', 89.8, 'USD', 'Cares design: with an internal wooden structure made with zero-emission adhesives to keep the planet free from pollution', 2, 3, 'chair_23.jpeg');
+
+
+ALTER TABLE ONLY Products
+    ADD CONSTRAINT fkProductsCategoryID FOREIGN KEY (categoryID) REFERENCES ProductCategories(id);
+
+ALTER TABLE ONLY Products
+    ADD CONSTRAINT fkProductsSupplierID FOREIGN KEY (supplierID) REFERENCES Suppliers(id);
+
+ALTER TABLE ONLY carts
+    ADD CONSTRAINT fkCartsUserID FOREIGN KEY (userID) REFERENCES Users(id);
