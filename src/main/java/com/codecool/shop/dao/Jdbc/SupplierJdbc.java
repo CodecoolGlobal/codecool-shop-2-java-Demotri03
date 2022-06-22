@@ -2,6 +2,8 @@ package com.codecool.shop.dao.Jdbc;
 
 import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.model.Supplier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -17,9 +19,11 @@ public class SupplierJdbc implements SupplierDao {
     public SupplierJdbc(DataSource dataSource){
         this.dataSource = dataSource;
     }
+    private static final Logger logger = LoggerFactory.getLogger(SupplierJdbc.class);
 
     @Override
     public void add(Supplier supplier) {
+        logger.debug("add Supplier called");
         try (Connection connection = dataSource.getConnection()) {
             String sql = "INSERT INTO suppliers(name, description) VALUES (?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -28,11 +32,13 @@ public class SupplierJdbc implements SupplierDao {
             statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            logger.error("Database insert failed");
         }
     }
 
     @Override
     public Supplier find(int id) {
+        logger.debug("find Supplier called");
         try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT * FROM suppliers WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -47,12 +53,14 @@ public class SupplierJdbc implements SupplierDao {
             return supplier;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            logger.error("Database select failed");
             return null;
         }
     }
 
     @Override
     public void remove(int id) {
+        logger.debug("remove Supplier called");
         try (Connection connection = dataSource.getConnection()) {
             String sql = "DELETE FROM suppliers WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -60,11 +68,13 @@ public class SupplierJdbc implements SupplierDao {
             statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            logger.error("Database delete failed");
         }
     }
 
     @Override
     public List<Supplier> getAll() {
+        logger.debug("get all Supplier called");
         try(Connection connection = dataSource.getConnection()) {
             String sql = "SELECT * FROM suppliers";
             ResultSet resultSet = connection.createStatement().executeQuery(sql);
@@ -79,6 +89,7 @@ public class SupplierJdbc implements SupplierDao {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            logger.error("Database select failed");
             return null;
         }
     }
