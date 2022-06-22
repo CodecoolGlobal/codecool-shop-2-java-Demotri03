@@ -2,14 +2,14 @@ package com.codecool.shop.util;
 
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.Jdbc.ProductCategoryJdbc;
+import com.codecool.shop.dao.Jdbc.ProductJdbc;
+import com.codecool.shop.dao.Jdbc.SupplierJdbc;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
-import com.codecool.shop.service.CartService;
 import com.codecool.shop.service.ProductService;
 import org.postgresql.ds.PGSimpleDataSource;
 
@@ -31,14 +31,18 @@ public class DaoSelector {
         properties.load(new FileInputStream("src/main/resources/connection.properties"));
         if(properties.getProperty("dao").equals("jdbc")){
             try {
+                System.out.println("I'm in jdbc service");
                 DataSource dataSource = connect();
                 ProductCategoryDao = new ProductCategoryJdbc(dataSource);
+                SupplierDao = new SupplierJdbc(dataSource);
+                ProductDao = new ProductJdbc(dataSource, ProductCategoryDao, SupplierDao);
 
             } catch (SQLException e) {
                 System.err.println("Database connection unavailable!");
             }
         }
         else if (properties.getProperty("dao").equals("memory")) {
+            System.out.println("I'm in old memory service");
             ProductDao = ProductDaoMem.getInstance();
             ProductCategoryDao = ProductCategoryDaoMem.getInstance();
             SupplierDao = SupplierDaoMem.getInstance();
