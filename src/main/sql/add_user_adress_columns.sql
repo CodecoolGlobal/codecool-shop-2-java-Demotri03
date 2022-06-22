@@ -1,9 +1,0 @@
-ALTER TABLE IF EXISTS users
-    ADD COLUMN first_name VARCHAR(100),
-    ADD COLUMN last_name VARCHAR(100),
-    ADD COLUMN country VARCHAR(100),
-    ADD COLUMN city VARCHAR(100),
-    ADD COLUMN street VARCHAR(100),
-    ADD COLUMN house_number INTEGER,
-    ADD COLUMN zip_code INTEGER;
-
