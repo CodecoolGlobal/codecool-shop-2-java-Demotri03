@@ -48,7 +48,7 @@ public class Initializer implements ServletContextListener {
 
         //setting up products and printing it
         productDataStore.add(new Product("Organic Metal 300", new BigDecimal("302.9"), "USD", "Stackable chair without armrests, made using natural materials and artisanal processes.", metalChair, chairFactory, "chair_1.jpeg"));
-        productDataStore.add(new Product("Cosy Yellow Miix", new BigDecimal("461.6"), "USD", "The shearling-style fabric is the ideal way to add warmth, style and contemporary chic to your space.", otherChair, yellowChairs, "chair_2.jpeg"));
+        productDataStore.add(new Product("Cosy Yellow from Internal Memory", new BigDecimal("461.6"), "USD", "The shearling-style fabric is the ideal way to add warmth, style and contemporary chic to your space.", otherChair, yellowChairs, "chair_2.jpeg"));
         productDataStore.add(new Product("The blue zone", new BigDecimal("299.9"), "USD", "Upholstered in shearling-style fabric", otherChair, ecoChair, "chair_3.jpeg"));
         productDataStore.add(new Product("Yellow Metal Classic 66", new BigDecimal("869.3"), "USD", "The shearling-style fabric is the ideal way to add warmth, style and contemporary chic to your space.", metalChair, yellowChairs, "chair_4.jpeg"));
         productDataStore.add(new Product("Straight Lines 700", new BigDecimal("179.3"), "USD", "Metal structure with matt black painted finish.", metalChair, chairFactory, "chair_5.jpeg"));

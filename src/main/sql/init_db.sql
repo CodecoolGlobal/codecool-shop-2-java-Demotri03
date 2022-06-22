@@ -60,7 +60,7 @@ INSERT INTO Carts(id, date, userid, items) VALUES (0, NULL, NULL, NULL);
 
 INSERT INTO Products(name, price, currency, description, categoryID, supplierID, imageRoute)  VALUES
 ('Organic Metal 300', 302.9, 'USD', 'Stackable chair without armrests, made using natural materials and artisanal processes.', 1, 1, 'chair_1.jpeg'),
-('Cosy Yellow Miix', 461.6, 'USD', 'The shearling-style fabric is the ideal way to add warmth, style and contemporary chic to your space.', 3, 3, 'chair_2.jpeg'),
+('Cosy Yellow from Database', 461.6, 'USD', 'The shearling-style fabric is the ideal way to add warmth, style and contemporary chic to your space.', 3, 3, 'chair_2.jpeg'),
 ('The blue zone', 299.9, 'USD', 'Upholstered in shearling-style fabric', 3, 2, 'chair_3.jpeg'),
 ('Yellow Metal Classic 66', 869.3, 'USD', 'The shearling-style fabric is the ideal way to add warmth, style and contemporary chic to your space.', 1, 3, 'chair_4.jpeg'),
 ('Straight Lines 700', 179.3, 'USD', 'Metal structure with matt black painted finish.', 1, 1, 'chair_5.jpeg'),
