@@ -22,10 +22,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebServlet(urlPatterns = {"/"})
 public class ProductController extends HttpServlet {
     private ProductService productService;
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -77,6 +80,7 @@ public class ProductController extends HttpServlet {
             }
         context.setVariable("category", productService.getProductSupplier(supplierId));
         context.setVariable("products", productService.getProductsForSupplier(supplierId));
+        logger.info("main page call by USER, chosen supplier: " + chosenSupplier);
     }
 
     private void filterByCategory(String chosenCategory, ProductService productService, WebContext context) {
@@ -85,10 +89,12 @@ public class ProductController extends HttpServlet {
             categoryId = 1;
             context.setVariable("category", productService.getProductCategory(categoryId));
             context.setVariable("products", productService.getProductsForCategory(categoryId));
+            logger.info("default category - not parameterized main page call by USER");
         } else if (chosenCategory.equals("all")) {
             categoryId = 4;
             context.setVariable("category", productService.getProductCategory(categoryId));
             context.setVariable("products", productService.getAllProducts());
+            logger.info("all products - chosen main page call by USER");
         } else {
             switch (chosenCategory) {
                 case "metalChairs":
@@ -105,6 +111,7 @@ public class ProductController extends HttpServlet {
             }
             context.setVariable("category", productService.getProductCategory(categoryId));
             context.setVariable("products", productService.getProductsForCategory(categoryId));
+            logger.info("main page call by USER, chosen category: " + chosenCategory);
         }
     }
 
