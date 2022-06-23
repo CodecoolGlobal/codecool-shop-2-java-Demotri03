@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/register/old"})
-public class RegistrationController extends HttpServlet {
+@WebServlet(urlPatterns = {"/register"})
+public class RegistrationSuccessController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class RegistrationController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
-        engine.process("product/register.html", context, resp.getWriter());
+        engine.process("product/registerSuccessfully.html", context, resp.getWriter());
     }
 }
 

@@ -1,5 +1,5 @@
-2022-06-23 +0200 [qtp636050161-23] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-23 +0200 [qtp636050161-26] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-23 +0200 [qtp636050161-26] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-23 +0200 [qtp636050161-25] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-23 +0200 [qtp636050161-21] INFO ProductController - main page call by USER, chosen supplier: chairFactory
+2022-06-23 +0200 [qtp1169734591-23] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp1169734591-19] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp1169734591-27] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp1169734591-27] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp1169734591-27] INFO ProductController - default category - not parameterized main page call by USER
