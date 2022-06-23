@@ -1,10 +1,5 @@
-2022-06-22 +0200 [qtp1359891833-16] INFO ProductController - chosen main page call by USER: metalChairs
-2022-06-22 +0200 [qtp1359891833-20] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-22 +0200 [qtp1359891833-22] INFO ProductController - chosen main page call by USER: metalChairs
-2022-06-22 +0200 [qtp1359891833-18] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-22 +0200 [qtp1359891833-22] INFO ProductController - chosen main page call by USER: metalChairs
-2022-06-22 +0200 [qtp1359891833-18] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-22 +0200 [qtp1359891833-22] INFO ProductController - chosen main page call by USER: woodChairs
-2022-06-22 +0200 [qtp1359891833-18] INFO ProductController - default category - not parameterized main page call by USER
-2022-06-22 +0200 [qtp1359891833-22] INFO ProductController - all products - chosen main page call by USER
-2022-06-22 +0200 [qtp1359891833-18] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp636050161-23] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp636050161-26] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp636050161-26] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp636050161-25] INFO ProductController - default category - not parameterized main page call by USER
+2022-06-23 +0200 [qtp636050161-21] INFO ProductController - main page call by USER, chosen supplier: chairFactory
