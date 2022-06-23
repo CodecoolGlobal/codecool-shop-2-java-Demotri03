@@ -12,9 +12,11 @@ import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.shoppingcart.Cart;
 import com.codecool.shop.model.user.Order;
 import com.codecool.shop.model.user.User;
+import com.codecool.shop.model.user.UserAdress;
 import com.codecool.shop.service.CartService;
 import com.codecool.shop.service.ProductService;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -32,21 +34,37 @@ public class PaymentConfirmation extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        CartService cartService = new CartService(CartDaoMem.getInstance());
+    //    CartService cartService = new CartService(CartDaoMem.getInstance());
     /*    TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 */
-        Cart cart = cartService.getCartById(1);
+       /* Cart cart = cartService.getCartById(1);
         Order order = new Order(cart);
         System.out.println( "total price: " + order.getPurchasePrice());
         User user = cart.getUser();
         System.out.println(user.toString());
-
+*/
         int confirmationCode;
-        var typedAccount = req.getParameter("account");
-        System.out.println(typedAccount);
+        var firstName = req.getParameter("first-name");
+        var lastName = req.getParameter("last-name");
+        var city = req.getParameter("city");
+        var country = req.getParameter("country");
+        var street = req.getParameter("street");
+        var houseNumber = req.getParameter("houseNumber");
+        var zipcode = req.getParameter("zipcode");
+        var cardNumber = req.getParameter("card-number");
+        var nameOnCard = req.getParameter("name-on-card");
+        var expiration = req.getParameter("card-exp");
+        var cvv= req.getParameter("cvv");
 
-        if (typedAccount.equals(String.valueOf(user.getCardNr()))) {
+        //ide jó volna ha lenne egy olyan osztály vagy bármi, ahonnan a user idt-el lehetne kérni
+        UserAdress userAdress = new UserAdress();
+        userAdress.setBillingFields(firstName, lastName, country, city, street, Integer.valueOf(houseNumber), Integer.valueOf(zipcode), Integer.valueOf(cardNumber),nameOnCard, expiration, Integer.valueOf(cvv) );
+
+        Gson gson = new Gson();
+        String userJson = gson.toJson(userAdress.getBillingFields());
+
+      /*  if (typedAccount.equals(String.valueOf(user.getCardNr()))) {
             user.getAccount().pay(order);
             if (order.isPayed()) {
                 confirmationCode = 1;
@@ -60,11 +78,12 @@ public class PaymentConfirmation extends HttpServlet {
 
         } else {
             confirmationCode = 5;
-        }
+        }*/
         var out = resp.getWriter();
+        System.out.println(userAdress.toString());
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        out.println(confirmationCode);
+        out.println(userJson);
 
     }
 

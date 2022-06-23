@@ -10,6 +10,7 @@ CREATE TABLE user_billing
     street       VARCHAR(200),
     house_number INTEGER,
     zip_code     INTEGER
+
 );
 
 ALTER TABLE ONLY user_billing
