@@ -1,25 +1,37 @@
 package com.codecool.shop.model.user;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class UserAdress {
-  //  private int id;
+    //  private int id;
     private String firstName;
     private String lastName;
     private String country;
     private String city;
     private String street;
-    private int houseNumber;
-    private int zipCode;
-    private int creditCardNumber;
+    private Integer houseNumber;
+    private Integer zipCode;
+    private Integer creditCardNumber;
     private String nameOnCard;
     private String expiration;
-    private int cvv;
+    private Integer cvv;
 
-    public UserAdress() {
-    }
+    public UserAdress(String firstName, String lastName, String country, String city, String street, Integer houseNumber, Integer zipCode, Integer creditCardNumber, String nameOnCard, String expiration, Integer cvv) {
+       try{ this.firstName = firstName;
+        this.lastName = lastName;
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.zipCode = zipCode;
+        this.creditCardNumber = creditCardNumber;
+        this.nameOnCard = nameOnCard;
+        this.expiration = expiration;
+        this.cvv = cvv;
+    }catch (NullPointerException e){
+           System.out.println("parameters can not be null");
+       }
+       }
 
     //ez volna a végleges, csak még nem tudom az id-t elkérni sehonnan
    /* public UserAdress(int id) {
@@ -31,19 +43,7 @@ public class UserAdress {
     }
 */
 
-    public void setBillingFields(String firstName, String lastName, String country, String city, String street, int houseNumber, int zipCode, int creditCardNumber, String nameOnCard, String expiration, int cvv) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.zipCode = zipCode;
-        this.creditCardNumber = creditCardNumber;
-        this.nameOnCard = nameOnCard;
-        this.expiration = expiration;
-        this.cvv = cvv;
-    }
+
 
     public Map<String, String> getBillingFields() {
         Map<String, String> adressMap = new HashMap<>();
@@ -61,6 +61,21 @@ public class UserAdress {
         return adressMap;
 
     }
+
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Integer getHouseNumber() {
+        return houseNumber;
+    }
+
+    public String getNameOnCard(){
+        return nameOnCard;
+    }
+
     @Override
     public String toString(){
         return String.format("Name: %s %s\n" +

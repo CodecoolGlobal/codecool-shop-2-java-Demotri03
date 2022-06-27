@@ -58,8 +58,8 @@ public class PaymentConfirmation extends HttpServlet {
         var cvv= req.getParameter("cvv");
 
         //ide jó volna ha lenne egy olyan osztály vagy bármi, ahonnan a user idt-el lehetne kérni
-        UserAdress userAdress = new UserAdress();
-        userAdress.setBillingFields(firstName, lastName, country, city, street, Integer.valueOf(houseNumber), Integer.valueOf(zipcode), Integer.valueOf(cardNumber),nameOnCard, expiration, Integer.valueOf(cvv) );
+
+        UserAdress userAdress = new UserAdress(firstName, lastName, country, city, street, Integer.valueOf(houseNumber), Integer.valueOf(zipcode), Integer.valueOf(cardNumber),nameOnCard, expiration, Integer.valueOf(cvv) );
 
         Gson gson = new Gson();
         String userJson = gson.toJson(userAdress.getBillingFields());
